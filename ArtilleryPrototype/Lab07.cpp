@@ -1,8 +1,8 @@
 /*************************************************************
  * 1. Name:
- *      The Key
+ *      Team 7 Daniel Carr & Cayden Lords
  * 2. Assignment Name:
- *      Lab 08: M777 Howitzer
+ *      Lab 07: M777 Howitzer
  * 3. Assignment Description:
  *      Simulate firing the M777 howitzer 15mm artillery piece
  * 4. What was the hardest part? Be as specific as possible.
