@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/GunPrototype/v17
+/ArtilleryPrototype/.vs/Lab07/FileContentIndex
+/ArtilleryPrototype/.vs/Lab07/v17
