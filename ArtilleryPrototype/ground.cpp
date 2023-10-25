@@ -11,7 +11,7 @@
 #include "uiDraw.h"   // for random() and drawLine()
 #include <cassert>
 
-const int WIDTH_HOWITZER = 15;
+const int WIDTH_HOWITZER = 140000;
 
 const double MIN_ALTITUDE = 300.0;  // min altitude is at 984ft
 const double MAX_ALTITUDE = 3000.0; // max altitude is 3,000m or 9842.52ft
