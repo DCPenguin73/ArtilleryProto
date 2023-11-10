@@ -26,17 +26,9 @@ class TestAngle
 public:
     void run()
     {
-        constructor();
-
-        getElevationMeters_out();
-        getElevationMeters_two();
-
-        reset_two();
-
-        getTarget_two();
-        getTarget_seven();
-
-        draw();
+        defaultConstructor();
+        nonDefaultConstructor();
+        copyConstructor();
     }
 
 private:

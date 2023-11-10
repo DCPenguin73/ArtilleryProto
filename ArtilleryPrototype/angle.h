@@ -7,12 +7,15 @@
 #include <cassert>   // for assert()
 using namespace std;
 
+class TestAngle;
 
 /************************************
  * ANGLE
  ************************************/
 class Angle
 {
+public:
+	friend TestAngle;
 private:
 	double radians;
 public:
