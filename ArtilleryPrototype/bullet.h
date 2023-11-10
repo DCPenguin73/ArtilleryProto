@@ -10,6 +10,8 @@ using namespace std;
  * BULLET
  ************************************/
 class Bullet {
+public: 
+	friend TestBullet;
 private:
 	Position location;
 	double xAcc;
@@ -38,5 +40,33 @@ public:
 		dragX = 0;
 		dragY = 0;
 	}
-	Bullet()
+	Bullet(const Bullet& copier) {
+		location = copier.location;
+		xAcc = copier.xAcc;
+		yAcc = copier.yAcc;
+		xVel = copier.xVel;
+		yVel = copier.yVel;
+		angle = copier.angle;
+		speed = copier.speed;
+		mach = copier.mach;
+		age = copier.age;
+		drag = copier.drag;
+		dragX = copier.dragX;
+		dragY = copier.dragY;
+	}
+	Bullet(Position aLocation, double aSpeed, Angle aAngle, double aAge) {
+		location = aLocation;
+		xAcc = 0;
+		yAcc = 0;
+		xVel = 0;
+		yVel = 0;
+		angle = aAngle;
+		speed = aSpeed;
+		mach = 0;
+		age = aAge;
+		drag = 0;
+		dragX = 0;
+		dragY = 0;
+	}
+
 };
