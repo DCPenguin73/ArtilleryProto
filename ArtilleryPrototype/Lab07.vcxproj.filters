@@ -36,6 +36,9 @@
     <ClCompile Include="angle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testAngle.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ground.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="angle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
