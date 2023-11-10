@@ -5,6 +5,11 @@
 /.vs/GunPrototype/v17
 /ArtilleryPrototype/.vs/Lab07/FileContentIndex
 /ArtilleryPrototype/.vs/Lab07/v17
-/.vs
-/ArtilleryPrototype/x64/Debug/Lab07.tlog
+/.vs/ArtilleryProto/v17
+/ArtilleryPrototype/packages/nupengl.core.0.1.0.1/build/native/docs
+/ArtilleryPrototype/packages/nupengl.core.0.1.0.1/build/native/include
+/ArtilleryPrototype/packages/nupengl.core.0.1.0.1/build/native/lib/Win32
+/ArtilleryPrototype/packages/nupengl.core.0.1.0.1/build/native
+/ArtilleryPrototype/packages/nupengl.core.0.1.0.1
+/ArtilleryPrototype/packages/nupengl.core.redist.0.1.0.1
 /ArtilleryPrototype/x64/Debug
