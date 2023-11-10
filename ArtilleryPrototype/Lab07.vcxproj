@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="angle.cpp" />
+    <ClCompile Include="database..cpp" />
     <ClCompile Include="ground.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="position.cpp" />
@@ -151,10 +152,12 @@
   <ItemGroup>
     <ClInclude Include="angle.h" />
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="ground.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testBullet.h" />
+    <ClInclude Include="testDatabase.h" />
     <ClInclude Include="testGround.h" />
     <ClInclude Include="testPosition.h" />
     <ClInclude Include="uiDraw.h" />

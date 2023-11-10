@@ -4,8 +4,9 @@
 #include <cassert>   // for assert()
 #include "angle.h"
 #include "position.h"
-using namespace std;
 
+using namespace std;
+class TestBullet;
 /************************************
  * BULLET
  ************************************/
@@ -68,5 +69,4 @@ public:
 		dragX = 0;
 		dragY = 0;
 	}
-
 };
