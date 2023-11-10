@@ -129,6 +129,7 @@ void callBack(const Interface* pUI, void* p)
         << pDemo->time << "s\n";
 }
 
+
 double Position::metersFromPixels = 40.0;
 
 /*********************************
