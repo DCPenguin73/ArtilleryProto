@@ -16,6 +16,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "ground.h"     // for GROUND
 #include "position.h"   // for POSITION
+#include "test.h"
 using namespace std;
 
 /*************************************************************************
@@ -146,21 +147,22 @@ int WINAPI wWinMain(
 int main(int argc, char** argv)
 #endif // !_WIN32
 {
+    testRunner();
    // Initialize OpenGL
-   Position ptUpperRight;
-   ptUpperRight.setPixelsX(700.0);
-   ptUpperRight.setPixelsY(500.0);
-   Position().setZoom(40.0 /* 42 meters equals 1 pixel */);
-   Interface ui(0, NULL,
-      "Demo",   /* name on the window */
-      ptUpperRight);
+   //Position ptUpperRight;
+   //ptUpperRight.setPixelsX(700.0);
+   //ptUpperRight.setPixelsY(500.0);
+   //Position().setZoom(40.0 /* 42 meters equals 1 pixel */);
+   //Interface ui(0, NULL,
+   //   "Demo",   /* name on the window */
+   //   ptUpperRight);
 
-   // Initialize the demo
-   Demo demo(ptUpperRight);
+   //// Initialize the demo
+   //Demo demo(ptUpperRight);
 
-   // set everything into action
-   ui.run(callBack, &demo);
+   //// set everything into action
+   //ui.run(callBack, &demo);
 
 
-   return 0;
+   //return 0;
 }
