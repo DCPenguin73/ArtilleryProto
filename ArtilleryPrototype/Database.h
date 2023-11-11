@@ -1,8 +1,11 @@
 #pragma once
-#pragma once
 #include <array>
+
+class TestDatabase;
+
 class Database {
 public:
+	friend TestDatabase;
 	double domain[20];
 	double range[20];
 	int length;
