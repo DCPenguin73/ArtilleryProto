@@ -36,8 +36,8 @@
     <ClCompile Include="angle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testAngle.h">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="database..cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +68,13 @@
     <ClInclude Include="angle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testBullet.h">
+    <ClInclude Include="Database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testAngle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
