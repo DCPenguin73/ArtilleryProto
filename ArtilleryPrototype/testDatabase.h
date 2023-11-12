@@ -11,7 +11,7 @@
 #pragma once
 
 #include <iostream>
-#include "position.h"
+#include "database.h"
 #include <cassert>
 
     using namespace std;
@@ -30,12 +30,73 @@ public:
         searchDatabase();
     }
 private:
+    bool closeEnough(double value, double test, double tolerence) const
+    {
+        double difference = value - test;
+        return (difference >= -tolerence) && (difference <= tolerence);
+    }
     void defaultConstructor() const
     {  // setup
+        double domain[] = { 3.0 };
+        double range[] = { .5 };
        // exercise
-        Database pos;
+        Database data = Database( domain,  range, 1);
         // verify
-        assert(pos.x == 0.0);
-        assert(pos.y == 0.0);
+        assert(data.domain[0] == 3.0);
+        assert(data.range[0] == 0.5);
+        assert(data.length == 1);
     }  // teardown
+    void linerInter() {
+        linerOut();
+    }
+    void searchDatabase() {
+        searchInbound();
+        searchOutbound();
+        searchNegative();
+    }
+    void linerOut() {
+        // setup
+        double domain[] = { 1, 2, 3, 4, 5 };
+        double range[] = { .1, .2, .3, .4, .5 };
+        Database data = Database(domain, range, 5);
+        double x1 = 1;
+        double x2 = 2;
+        double y1 = 2;
+        double y2 = 4;
+        double p = 1.5;
+        //exercise
+        double value = data.linearInter(x1, y1, x2, y2, p);
+        // verify
+        assert(closeEnough(value, 3, 0.0000001));
+    }
+    void searchInbound() {
+        // setup
+        double domain[] = { 1, 2, 3, 4, 5 };
+        double range[] = { .1, .2, .3, .4, .5 };
+        Database data = Database(domain, range, 5);
+        //exercise
+        double value = data.searchDatabase(3);
+        //verify
+        assert(closeEnough(value, .3, .000001));
+    }
+    void searchOutbound() {
+        // setup
+        double domain[] = { 1, 2, 3, 4, 5 };
+        double range[] = { .1, .2, .3, .4, .5 };
+        Database data = Database(domain, range, 5);
+        //exercise
+        double value = data.searchDatabase(6);
+        //verify
+        assert(value == NULL);
+    }
+    void searchNegative() {
+        // setup
+        double domain[] = { 1, 2, 3, 4, 5 };
+        double range[] = { .1, .2, .3, .4, .5 };
+        Database data = Database(domain, range, 5);
+        //exercise
+        double value = data.searchDatabase(-1);
+        //verify
+        assert(closeEnough(value, -.1, .000001));
+    }
 };
