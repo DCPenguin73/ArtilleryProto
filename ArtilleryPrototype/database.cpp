@@ -24,4 +24,5 @@ double Database::searchDatabase(double pointX) {
             return linearInter(domain[i - 1], range[i - 1], domain[i], range[i], pointX);
         }
     }
+    return NULL;
 };
