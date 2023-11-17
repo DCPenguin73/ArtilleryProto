@@ -23,4 +23,5 @@ void testRunner()
    TestGround().run();
    TestDatabase().run();
    TestAngle().run();
+   cout << "All Tests Passed";
 }
