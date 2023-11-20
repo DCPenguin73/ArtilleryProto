@@ -69,4 +69,16 @@ public:
 		dragX = 0;
 		dragY = 0;
 	}
+private:
+	double computeDistance(double s, double v, double a, double t);
+	double computeAcceleration(double f, double m);
+	double computeVelocity(double v, double a, double t);
+	double computeVertical(Angle a, double total);
+	double computeHorizontal(Angle a, double total);
+	double computeTotal(double x, double y);
+	double changeAngle(double horX, double verY);
+	double dragForce(double coefficient, double density, double velocity, double area);
+	double linearInter(double pos1X, double pos1Y, double pos2X, double pos2Y, double pointX);
+public:
+	Position bulletMath();
 };
