@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="angle.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="ground.cpp" />
     <ClCompile Include="Lab07.cpp" />
