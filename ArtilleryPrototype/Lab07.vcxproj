@@ -142,9 +142,11 @@
     <ClCompile Include="angle.cpp" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="ground.cpp" />
+    <ClCompile Include="howitzer.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClInclude Include="howitzer.h" />
     <ClInclude Include="testAngle.h" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
