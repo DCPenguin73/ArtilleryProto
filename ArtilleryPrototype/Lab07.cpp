@@ -47,6 +47,8 @@ public:
          projectilePath[i].setPixelsX((double)i * 2.0);
          projectilePath[i].setPixelsY(ptUpperRight.getPixelsY() / 1.5);
       }
+      bullet = Bullet(ptHowitzer, 827, Angle(10), 0);
+
    }
 
    Ground ground;                 // the ground
@@ -55,7 +57,7 @@ public:
    Position  ptUpperRight;        // size of the screen
    double angle;                  // angle of the howitzer 
    double time;                   // amount of time since the last firing
-   Bullet bullet = Bullet(Position(200,200), 827, Angle(30), 0);
+   Bullet bullet;
 };
 
 /*************************************
@@ -99,12 +101,12 @@ void callBack(const Interface* pUI, void* p)
    pDemo->time += 0.5;
 
    // move the projectile across the screen
-   for (int i = 0; i < 20; i++)
-   {
-       Position location = pDemo->bullet.bulletMath();
-       pDemo->projectilePath[i].setPixelsX(location.getMetersX());
-       pDemo->projectilePath[i].setPixelsY(location.getMetersY());
-   }
+       if (pDemo->projectilePath[0].getMetersY() >= 0) {
+           Position location = pDemo->bullet.bulletMath();
+           double age = pDemo->bullet.getAge();
+           pDemo->projectilePath[0].setMetersX(location.getMetersX());
+           pDemo->projectilePath[0].setMetersY(location.getMetersY());
+       }
 
    //
    // draw everything
@@ -128,7 +130,7 @@ void callBack(const Interface* pUI, void* p)
    gout << "Time since the bullet was fired: "
         << pDemo->bullet.getAge() << "s\n";
    gout << "Location of Bullet"
-       << pDemo->projectilePath[19];
+       << pDemo->projectilePath[0];
 }
 
 
