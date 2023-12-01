@@ -17,6 +17,7 @@
 #include "ground.h"     // for GROUND
 #include "position.h"   // for POSITION
 #include "test.h"
+#include "bullet.h"
 using namespace std;
 
 /*************************************************************************
@@ -30,7 +31,7 @@ public:
       ptUpperRight(ptUpperRight),
       ground(ptUpperRight),
       time(0.0),
-      angle(0.0)
+      angle(30.0)
    {
       // Set the horizontal position of the howitzer. This should be random.
       ptHowitzer.setPixelsX(Position(ptUpperRight).getPixelsX() / 2.0);
@@ -54,6 +55,7 @@ public:
    Position  ptUpperRight;        // size of the screen
    double angle;                  // angle of the howitzer 
    double time;                   // amount of time since the last firing
+   Bullet bullet = Bullet(Position(200,200), 827, Angle(30), 0);
 };
 
 /*************************************
@@ -99,12 +101,9 @@ void callBack(const Interface* pUI, void* p)
    // move the projectile across the screen
    for (int i = 0; i < 20; i++)
    {
-      // this bullet is moving left at 1 pixel per frame
-      double x = pDemo->projectilePath[i].getPixelsX();
-      x -= 1.0;
-      if (x < 0)
-         x = pDemo->ptUpperRight.getPixelsX();
-      pDemo->projectilePath[i].setPixelsX(x);
+       Position location = pDemo->bullet.bulletMath();
+       pDemo->projectilePath[i].setPixelsX(location.getMetersX());
+       pDemo->projectilePath[i].setPixelsY(location.getMetersY());
    }
 
    //
@@ -127,7 +126,9 @@ void callBack(const Interface* pUI, void* p)
    gout.setf(ios::fixed | ios::showpoint);
    gout.precision(1);
    gout << "Time since the bullet was fired: "
-        << pDemo->time << "s\n";
+        << pDemo->bullet.getAge() << "s\n";
+   gout << "Location of Bullet"
+       << pDemo->projectilePath[19];
 }
 
 

@@ -4,6 +4,12 @@
 #include <cassert>   // for assert()
 #include "angle.h"
 #include "position.h"
+#include "Database.h"
+#define PI 3.1415926535
+#define TIME_INTERVAL .01
+#define WEIGHT        46.7   // Weight in KG
+#define TIME_INTERVAL .01
+
 
 using namespace std;
 class TestBullet;
@@ -59,9 +65,9 @@ public:
 		location = aLocation;
 		xAcc = 0;
 		yAcc = 0;
-		xVel = 0;
-		yVel = 0;
 		angle = aAngle;
+		xVel = computeHorizontal(aAngle, aSpeed);
+		yVel = computeVertical(aAngle, aSpeed);;
 		speed = aSpeed;
 		mach = 0;
 		age = aAge;
@@ -81,4 +87,6 @@ private:
 	double linearInter(double pos1X, double pos1Y, double pos2X, double pos2Y, double pointX);
 public:
 	Position bulletMath();
+	double getAge();
 };
+
