@@ -134,6 +134,9 @@ void callBack(const Interface* pUI, void* p)
                pDemo->ground.reset(pDemo->ptHowitzer);
            }
        }
+   else {
+       pDemo->bullet.endMove();
+   }
   //
    // draw everything
    //
