@@ -101,14 +101,17 @@ void callBack(const Interface* pUI, void* p)
    pDemo->time += 0.5;
 
    // move the projectile across the screen
-       if (pDemo->projectilePath[0].getMetersY() >= 0) {
+   if (pDemo->ground.getElevationMeters(pDemo->projectilePath[0]) < pDemo->projectilePath[0].getMetersY()) {
            Position location = pDemo->bullet.bulletMath();
            double age = pDemo->bullet.getAge();
            pDemo->projectilePath[0].setMetersX(location.getMetersX());
            pDemo->projectilePath[0].setMetersY(location.getMetersY());
+           if (pDemo->ground.getTarget().getMetersX() == location.getMetersX() && pDemo->ground.getTarget().getMetersY() == location.getMetersY())
+           {
+               pDemo->ground.reset(pDemo->ptHowitzer);
+           }
        }
-
-   //
+  //
    // draw everything
    //
 
