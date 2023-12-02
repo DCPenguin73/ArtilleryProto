@@ -32,7 +32,7 @@ public:
         ptUpperRight(ptUpperRight),
         ground(ptUpperRight),
         time(0.0),
-        angle(howitzer.getAngle())
+        angle(howitzer.getRadian())
    {
       // Set the horizontal position of the howitzer. This should be random.
       ptHowitzer.setPixelsX(Position(ptUpperRight).getPixelsX() / 5.0);
@@ -78,44 +78,45 @@ void callBack(const Interface* pUI, void* p)
 
    // move a large amount
    if (pUI->isRight()) {
-       double right = pDemo->howitzer.getAngle();
-       pDemo->howitzer.setAngle((right += 0.05));
+       double right = pDemo->howitzer.getRadian();
+       pDemo->howitzer.setRadian((right += 0.05));
    }
    if (pUI->isLeft()) {
-       double left = pDemo->howitzer.getAngle();
-       pDemo->howitzer.setAngle((left -= 0.05));
+       double left = pDemo->howitzer.getRadian();
+       pDemo->howitzer.setRadian((left -= 0.05));
    }
 
    // move by a little
    if (pUI->isUp()) {
-       double up = pDemo->howitzer.getAngle();
-       pDemo->howitzer.setAngle(up += (up >= 0 ? -0.003 : 0.003));
+       double up = pDemo->howitzer.getRadian();
+       if (up > 0) {
+            pDemo->howitzer.setRadian(up += -0.003);
+       }
+       if (up < 0) {
+           pDemo->howitzer.setRadian(up += 0.003);
+       }
    }
    if (pUI->isDown()) {
-       double down = pDemo->howitzer.getAngle();
-       pDemo->howitzer.setAngle( down += (down >= 0 ? 0.003 : -0.003));
+       double down = pDemo->howitzer.getRadian();
+       if (down > 0) {
+           pDemo->howitzer.setRadian(down += 0.003);
+       }
+       if (down < 0) {
+           pDemo->howitzer.setRadian(down += -0.003);
+       }
    }
 
    // fire that gun
    if (pUI->isSpace()) {
        if (pDemo->bullet.getSpeed() == 0.0) {
-
-
            pDemo->howitzer.fireBullet();
-           cout << pDemo->howitzer.getAngle() << endl;
-           cout << pDemo->howitzer.getPosition() << endl;
-           cout << time << endl;
-           cout << pDemo->bullet.getAge() << endl;
-           cout << pDemo->bullet.bulletMath() << endl;
-           cout << endl;
            for (int i = 0; i < 20; i++)
            {
                pDemo->projectilePath[i].setPixelsX((double)i * 2.0);
                pDemo->projectilePath[i].setPixelsY(pDemo->ptUpperRight.getPixelsY() / 1.5);
            }
-           pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getAngle(), 0);
+           pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getDegree(), 0);
        }
-       //pDemo->time = 0.0;
    }
       
 
@@ -150,7 +151,7 @@ void callBack(const Interface* pUI, void* p)
    pDemo->ground.draw(gout);
 
    // draw the howitzer
-   gout.drawHowitzer(pDemo->howitzer.getPosition(), pDemo->howitzer.getAngle(), pDemo->time);
+   gout.drawHowitzer(pDemo->howitzer.getPosition(), pDemo->howitzer.getRadian(), pDemo->time);
 
    // draw the projectile
    for (int i = 0; i < 20; i++)

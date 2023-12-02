@@ -29,10 +29,12 @@ class Howitzer
 /// </summary>
 public:
 	Howitzer() {
-		angle.setDegrees(0);
+		angle.setDegrees(44.5);
 	}
-	double getAngle() const;
-	void setAngle(double angleR);
+	double getRadian() const;
+	double getDegree() const;
+	void setRadian(double angleR);
+	void setDegree(double angleD);
 	Position getPosition() const;
 	void setPosition(double x, double y);
 	

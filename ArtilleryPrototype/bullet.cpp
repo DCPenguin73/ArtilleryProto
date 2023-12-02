@@ -201,7 +201,7 @@ Position Bullet::bulletMath() {
     speed = computeTotal(xVel, yVel);
     age = age + TIME_INTERVAL;
 
-    cout << "Speed: " << speed << "xVel: " << xVel << "yVel" << yVel <<  endl;
+    //cout << "Speed: " << speed << "xVel: " << xVel << "yVel" << yVel <<  endl;
 
     return location;
 }
