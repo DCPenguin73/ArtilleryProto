@@ -13,6 +13,7 @@
 #include <cassert>
 #include "position.h"   // for Point
 #include "angle.h"
+#include "bullet.h"
 
 using namespace std;
 
@@ -27,17 +28,21 @@ class Howitzer
 /// position, angle, set angle, get angle, get postion, set posion, fire bullet
 /// </summary>
 public:
+	Howitzer() {
+		angle.setRadians(30);
+	}
 	double getAngle() const;
 	void setAngle(double angleR);
-	double getPosition() const;
-	void setPosition(double angleD);
+	Position getPosition() const;
+	void setPosition(double x, double y);
 	
-	//fireBullet;
+	void fireBullet();
 
 
 private:
 	Position position;
 	Angle angle;
+	Bullet bullet;
 
 
 };
