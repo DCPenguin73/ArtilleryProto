@@ -213,3 +213,10 @@ Position Bullet::bulletMath() {
 double Bullet::getAge() {
     return age;
 }
+/****************************************************************
+ * END MOVE
+ * Sets the bullet's speed to 0. 
+ ****************************************************************/
+void Bullet::endMove() {
+    speed = 0;
+}

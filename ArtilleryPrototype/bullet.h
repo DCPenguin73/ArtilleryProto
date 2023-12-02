@@ -89,5 +89,6 @@ private:
 public:
 	Position bulletMath();
 	double getAge();
+	void endMove();
 };
 
