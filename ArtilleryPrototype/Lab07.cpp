@@ -98,6 +98,7 @@ void callBack(const Interface* pUI, void* p)
 
    // fire that gun
    if (pUI->isSpace()) {
+       
        pDemo->howitzer.fireBullet();
        cout << pDemo->howitzer.getAngle() << endl;
        cout << pDemo->howitzer.getPosition() << endl;
