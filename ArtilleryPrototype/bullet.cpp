@@ -217,3 +217,6 @@ double Bullet::getAge() {
 void Bullet::endMove() {
     speed = 0;
 }
+double Bullet::getSpeed() {
+    return speed;
+}

@@ -90,5 +90,6 @@ public:
 	Position bulletMath();
 	double getAge();
 	void endMove();
+	double getSpeed();
 };
 
