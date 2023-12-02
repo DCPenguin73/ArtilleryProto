@@ -18,6 +18,7 @@
 #include "position.h"   // for POSITION
 #include "test.h"
 #include "bullet.h"
+#include "howitzer.h"
 using namespace std;
 
 /*************************************************************************
@@ -27,17 +28,19 @@ using namespace std;
 class Demo
 {
 public:
-   Demo(Position ptUpperRight) :
-      ptUpperRight(ptUpperRight),
-      ground(ptUpperRight),
-      time(0.0),
-      angle(30.0)
+    Demo(Position ptUpperRight) :
+        ptUpperRight(ptUpperRight),
+        ground(ptUpperRight),
+        time(0.0),
+        angle(howitzer.getAngle())
    {
       // Set the horizontal position of the howitzer. This should be random.
-      ptHowitzer.setPixelsX(Position(ptUpperRight).getPixelsX() / 2.0);
+      ptHowitzer.setPixelsX(Position(ptUpperRight).getPixelsX() / 5.0);
 
       // Generate the ground and set the vertical position of the howitzer.
       ground.reset(ptHowitzer);
+
+      howitzer.setPosition(ptHowitzer.getMetersX(), ptHowitzer.getMetersY());
 
       // This is to make the bullet travel across the screen. Notice how there are 
       // 20 pixels, each with a different age. This gives the appearance
@@ -47,7 +50,7 @@ public:
          projectilePath[i].setPixelsX((double)i * 2.0);
          projectilePath[i].setPixelsY(ptUpperRight.getPixelsY() / 1.5);
       }
-      bullet = Bullet(ptHowitzer, 827, Angle(10), 0);
+      bullet = Bullet(ptHowitzer, 827, Angle(30), 0);
 
    }
 
@@ -55,9 +58,10 @@ public:
    Position  projectilePath[20];  // path of the projectile
    Position  ptHowitzer;          // location of the howitzer
    Position  ptUpperRight;        // size of the screen
-   double angle;                  // angle of the howitzer 
+   Angle angle;                  // angle of the howitzer 
    double time;                   // amount of time since the last firing
    Bullet bullet;
+   Howitzer howitzer;
 };
 
 /*************************************
@@ -78,20 +82,37 @@ void callBack(const Interface* pUI, void* p)
    //
 
    // move a large amount
-   if (pUI->isRight())
-      pDemo->angle += 0.05;
-   if (pUI->isLeft())
-      pDemo->angle -= 0.05;
+   if (pUI->isRight()) {
+       double right = pDemo->howitzer.getAngle();
+       pDemo->howitzer.setAngle((right += 0.05));
+   }
+   if (pUI->isLeft()) {
+       double left = pDemo->howitzer.getAngle();
+       pDemo->howitzer.setAngle((left -= 0.05));
+   }
 
    // move by a little
-   if (pUI->isUp())
-      pDemo->angle += (pDemo->angle >= 0 ? -0.003 : 0.003);
-   if (pUI->isDown())
-      pDemo->angle += (pDemo->angle >= 0 ? 0.003 : -0.003);
+   if (pUI->isUp()) {
+       double up = pDemo->howitzer.getAngle();
+       pDemo->howitzer.setAngle(up += (up >= 0 ? -0.003 : 0.003));
+   }
+   if (pUI->isDown()) {
+       double down = pDemo->howitzer.getAngle();
+       pDemo->howitzer.setAngle( down += (down >= 0 ? 0.003 : -0.003));
+   }
 
    // fire that gun
-   if (pUI->isSpace())
-      pDemo->time = 0.0;
+   if (pUI->isSpace()) {
+       pDemo->howitzer.fireBullet();
+       cout << pDemo->howitzer.getAngle() << endl;
+       cout << pDemo->howitzer.getPosition() << endl;
+       cout << time << endl;
+       cout << pDemo->bullet.getAge() << endl;
+       cout << pDemo->bullet.bulletMath() << endl;
+       cout << endl;
+       //pDemo->time = 0.0;
+   }
+      
 
    //
    // perform all the game logic
@@ -121,7 +142,7 @@ void callBack(const Interface* pUI, void* p)
    pDemo->ground.draw(gout);
 
    // draw the howitzer
-   gout.drawHowitzer(pDemo->ptHowitzer, pDemo->angle, pDemo->time);
+   gout.drawHowitzer(pDemo->howitzer.getPosition(), pDemo->howitzer.getAngle(), pDemo->time);
 
    // draw the projectile
    for (int i = 0; i < 20; i++)
