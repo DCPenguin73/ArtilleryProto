@@ -98,21 +98,23 @@ void callBack(const Interface* pUI, void* p)
 
    // fire that gun
    if (pUI->isSpace()) {
-       
-       pDemo->howitzer.fireBullet();
-       cout << pDemo->howitzer.getAngle() << endl;
-       cout << pDemo->howitzer.getPosition() << endl;
-       cout << time << endl;
-       cout << pDemo->bullet.getAge() << endl;
-       cout << pDemo->bullet.bulletMath() << endl;
-       cout << endl;
-       for (int i = 0; i < 20; i++)
-       {
-           pDemo->projectilePath[i].setPixelsX((double)i * 2.0);
-           pDemo->projectilePath[i].setPixelsY(pDemo->ptUpperRight.getPixelsY() / 1.5);
+       if (pDemo->bullet.getSpeed() == 0.0) {
+
+
+           pDemo->howitzer.fireBullet();
+           cout << pDemo->howitzer.getAngle() << endl;
+           cout << pDemo->howitzer.getPosition() << endl;
+           cout << time << endl;
+           cout << pDemo->bullet.getAge() << endl;
+           cout << pDemo->bullet.bulletMath() << endl;
+           cout << endl;
+           for (int i = 0; i < 20; i++)
+           {
+               pDemo->projectilePath[i].setPixelsX((double)i * 2.0);
+               pDemo->projectilePath[i].setPixelsY(pDemo->ptUpperRight.getPixelsY() / 1.5);
+           }
+           pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getAngle(), 0);
        }
-       pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getAngle(), 0);
-       
        //pDemo->time = 0.0;
    }
       
