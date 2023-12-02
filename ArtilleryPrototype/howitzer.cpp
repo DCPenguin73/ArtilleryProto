@@ -17,15 +17,15 @@
 //void set angle, double get angle, double get postion, void set posion, void fire bullet
 
 //Howitzer::Howitzer(){}
-void Howitzer::setAngle(double angleR) {
-	angle.setRadians(angleR);
+void Howitzer::setAngle(double angleD) {
+	angle.setDegrees(angleD);
 }
 void Howitzer::setPosition(double x, double y) {
 	position.setMetersX(x);
 	position.setMetersY(y);
 }
 double Howitzer::getAngle() const {
-	return angle.getRadians();
+	return angle.getDegrees();
 }
 Position Howitzer::getPosition() const {
 	return position;

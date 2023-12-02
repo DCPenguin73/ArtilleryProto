@@ -45,12 +45,7 @@ public:
       // This is to make the bullet travel across the screen. Notice how there are 
       // 20 pixels, each with a different age. This gives the appearance
       // of a trail that fades off in the distance.
-      for (int i = 0; i < 20; i++)
-      {
-         projectilePath[i].setPixelsX((double)i * 2.0);
-         projectilePath[i].setPixelsY(ptUpperRight.getPixelsY() / 1.5);
-      }
-      bullet = Bullet(ptHowitzer, 827, Angle(30), 0);
+      
 
    }
 
@@ -110,6 +105,13 @@ void callBack(const Interface* pUI, void* p)
        cout << pDemo->bullet.getAge() << endl;
        cout << pDemo->bullet.bulletMath() << endl;
        cout << endl;
+       for (int i = 0; i < 20; i++)
+       {
+           pDemo->projectilePath[i].setPixelsX((double)i * 2.0);
+           pDemo->projectilePath[i].setPixelsY(pDemo->ptUpperRight.getPixelsY() / 1.5);
+       }
+       pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getAngle(), 0);
+       
        //pDemo->time = 0.0;
    }
       
