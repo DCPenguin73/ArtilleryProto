@@ -200,9 +200,6 @@ Position Bullet::bulletMath() {
     location.setMetersY(computeDistance(location.getMetersY(), yVel, yAcc, TIME_INTERVAL));
     speed = computeTotal(xVel, yVel);
     age = age + TIME_INTERVAL;
-
-    //cout << "Speed: " << speed << "xVel: " << xVel << "yVel" << yVel <<  endl;
-
     return location;
 }
 
