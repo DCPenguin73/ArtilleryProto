@@ -91,5 +91,7 @@ public:
 	double getAge();
 	void endMove();
 	double getSpeed();
+	double getX();
+	Position getPosition();
 };
 

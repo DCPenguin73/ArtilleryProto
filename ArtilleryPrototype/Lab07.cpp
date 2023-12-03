@@ -160,10 +160,20 @@ void callBack(const Interface* pUI, void* p)
    // draw some text on the screen
    gout.setf(ios::fixed | ios::showpoint);
    gout.precision(1);
-   gout << "Time since the bullet was fired: "
+   gout.setPosition(Position(pDemo->ptUpperRight.getPixelsX() + 21000, pDemo->ptUpperRight.getPixelsY() + 19000));
+   gout << "Angle: " << pDemo->howitzer.getDegree();
+   gout.setPosition(Position(pDemo->ptUpperRight.getPixelsX() + 21000, pDemo->ptUpperRight.getPixelsY() + 18000));
+   gout << "Hang Time: "
         << pDemo->bullet.getAge() << "s\n";
-   gout << "Location of Bullet"
-       << pDemo->projectilePath[0];
+   gout.setPosition(Position(pDemo->ptUpperRight.getPixelsX() + 21000, pDemo->ptUpperRight.getPixelsY() + 17000));
+   gout << "Altidue: "
+       << pDemo->ground.getElevationMeters(pDemo->bullet.getPosition());
+   gout.setPosition(Position(pDemo->ptUpperRight.getPixelsX() + 21000, pDemo->ptUpperRight.getPixelsY() + 16000));
+   gout << "Speed: "
+       << pDemo->bullet.getSpeed();
+   gout.setPosition(Position(pDemo->ptUpperRight.getPixelsX() + 21000, pDemo->ptUpperRight.getPixelsY() + 15000));
+   gout << "Distance: "
+       << pDemo->bullet.getX();
 }
 
 

@@ -223,3 +223,9 @@ void Bullet::endMove() {
 double Bullet::getSpeed() {
     return speed;
 }
+double Bullet::getX() {
+    return location.getMetersX();
+}
+Position Bullet::getPosition() {
+    return location;
+}
