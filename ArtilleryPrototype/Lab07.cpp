@@ -2,7 +2,7 @@
  * 1. Name:
  *      Team 7 Daniel Carr & Cayden Lords
  * 2. Assignment Name:
- *      Lab 07: M777 Howitzer
+ *      Lab 12: M777 Howitzer
  * 3. Assignment Description:
  *      Simulate firing the M777 howitzer 15mm artillery piece
  * 4. What was the hardest part? Be as specific as possible.
@@ -133,10 +133,15 @@ void callBack(const Interface* pUI, void* p)
            double age = pDemo->bullet.getAge();
            pDemo->projectilePath[0].setMetersX(location.getMetersX());
            pDemo->projectilePath[0].setMetersY(location.getMetersY());
-           if (pDemo->ground.getTarget().getMetersX() == location.getMetersX() && pDemo->ground.getTarget().getMetersY() == location.getMetersY())
+           if 
+               ((pDemo->ground.getTarget().getMetersX() + 400 >= location.getMetersX() && pDemo->ground.getTarget().getMetersX() - 400 <= location.getMetersX())
+           &&
+               (pDemo->ground.getTarget().getMetersY() + 400 >= location.getMetersY() && pDemo->ground.getTarget().getMetersY() - 400 <= location.getMetersY()))
            {
                pDemo->ground.reset(pDemo->ptHowitzer);
+               pDemo->bullet.endMove();
            }
+           cout << pDemo->ground.getTarget() << endl;
        }
    else {
        pDemo->bullet.endMove();

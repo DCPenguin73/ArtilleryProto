@@ -216,6 +216,8 @@ double Bullet::getAge() {
  ****************************************************************/
 void Bullet::endMove() {
     speed = 0;
+    location = Position(0, 0);
+    age = 0;
 }
 double Bullet::getSpeed() {
     return speed;
