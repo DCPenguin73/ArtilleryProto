@@ -6,7 +6,7 @@
 #include "position.h"
 #include "Database.h"
 #define PI 3.1415926535
-#define TIME_INTERVAL .5
+#define TIME_INTERVAL .1
 
 #define WEIGHT        46.7   // Weight in KG
 

@@ -68,84 +68,86 @@ public:
  **************************************/
 void callBack(const Interface* pUI, void* p)
 {
-   // the first step is to cast the void pointer into a game object. This
-   // is the first step of every single callback function in OpenGL. 
-   Demo* pDemo = (Demo*)p;
+    // the first step is to cast the void pointer into a game object. This
+    // is the first step of every single callback function in OpenGL. 
+    Demo* pDemo = (Demo*)p;
 
-   //
-   // accept input
-   //
+    //
+    // accept input
+    //
 
-   // move a large amount
-   if (pUI->isRight()) {
-       double right = pDemo->howitzer.getRadian();
-       pDemo->howitzer.setRadian((right += 0.05));
-   }
-   if (pUI->isLeft()) {
-       double left = pDemo->howitzer.getRadian();
-       pDemo->howitzer.setRadian((left -= 0.05));
-   }
+    // move a large amount
+    if (pUI->isRight()) {
+        double right = pDemo->howitzer.getRadian();
+        pDemo->howitzer.setRadian((right += 0.05));
+    }
+    if (pUI->isLeft()) {
+        double left = pDemo->howitzer.getRadian();
+        pDemo->howitzer.setRadian((left -= 0.05));
+    }
 
-   // move by a little
-   if (pUI->isUp()) {
-       double up = pDemo->howitzer.getRadian();
-       if (up > 0) {
+    // move by a little
+    if (pUI->isUp()) {
+        double up = pDemo->howitzer.getRadian();
+        if (up > 0) {
             pDemo->howitzer.setRadian(up += -0.003);
-       }
-       if (up < 0) {
-           pDemo->howitzer.setRadian(up += 0.003);
-       }
-   }
-   if (pUI->isDown()) {
-       double down = pDemo->howitzer.getRadian();
-       if (down > 0) {
-           pDemo->howitzer.setRadian(down += 0.003);
-       }
-       if (down < 0) {
-           pDemo->howitzer.setRadian(down += -0.003);
-       }
-   }
+        }
+        if (up < 0) {
+            pDemo->howitzer.setRadian(up += 0.003);
+        }
+    }
+    if (pUI->isDown()) {
+        double down = pDemo->howitzer.getRadian();
+        if (down > 0) {
+            pDemo->howitzer.setRadian(down += 0.003);
+        }
+        if (down < 0) {
+            pDemo->howitzer.setRadian(down += -0.003);
+        }
+    }
 
-   // fire that gun
-   if (pUI->isSpace()) {
-       if (pDemo->bullet.getSpeed() == 0.0) {
-           pDemo->howitzer.fireBullet();
-           for (int i = 0; i < 20; i++)
-           {
-               pDemo->projectilePath[i].setPixelsX((double)i * 2.0);
-               pDemo->projectilePath[i].setPixelsY(pDemo->ptUpperRight.getPixelsY() / 1.5);
-           }
-           pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getDegree(), 0);
-       }
-   }
-      
+    // fire that gun
+    if (pUI->isSpace()) {
+        if (pDemo->bullet.getSpeed() == 0.0) {
+            pDemo->howitzer.fireBullet();
+            for (int i = 0; i < 20; i++)
+            {
+                pDemo->projectilePath[i].setPixelsX((double)i * 2.0);
+                pDemo->projectilePath[i].setPixelsY(pDemo->ptUpperRight.getPixelsY() / 1.5);
+            }
+            pDemo->bullet = Bullet(pDemo->howitzer.getPosition(), 827, pDemo->howitzer.getDegree(), 0);
+        }
+    }
 
-   //
-   // perform all the game logic
-   //
 
-   // advance time by half a second.
-   pDemo->time += 0.5;
+    //
+    // perform all the game logic
+    //
 
-   // move the projectile across the screen
-   if (pDemo->ground.getElevationMeters(pDemo->projectilePath[0]) < pDemo->projectilePath[0].getMetersY()) {
-           Position location = pDemo->bullet.bulletMath();
-           double age = pDemo->bullet.getAge();
-           pDemo->projectilePath[0].setMetersX(location.getMetersX());
-           pDemo->projectilePath[0].setMetersY(location.getMetersY());
-           if 
-               ((pDemo->ground.getTarget().getMetersX() + 400 >= location.getMetersX() && pDemo->ground.getTarget().getMetersX() - 400 <= location.getMetersX())
-           &&
-               (pDemo->ground.getTarget().getMetersY() + 400 >= location.getMetersY() && pDemo->ground.getTarget().getMetersY() - 400 <= location.getMetersY()))
-           {
-               pDemo->ground.reset(pDemo->ptHowitzer);
-               pDemo->bullet.endMove();
-           }
-           cout << pDemo->ground.getTarget() << endl;
-       }
-   else {
-       pDemo->bullet.endMove();
-   }
+    // advance time by half a second.
+    pDemo->time += .5;
+
+    // move the projectile across the screen
+    for (int i = 0; i < 5; i++) {
+    if (pDemo->ground.getElevationMeters(pDemo->projectilePath[i]) < pDemo->projectilePath[i].getMetersY()) {
+        Position location = pDemo->bullet.bulletMath();
+        double age = pDemo->bullet.getAge();
+        pDemo->projectilePath[i].setMetersX(location.getMetersX());
+        pDemo->projectilePath[i].setMetersY(location.getMetersY());
+        if
+            ((pDemo->ground.getTarget().getMetersX() + 400 >= location.getMetersX() && pDemo->ground.getTarget().getMetersX() - 400 <= location.getMetersX())
+                &&
+                (pDemo->ground.getTarget().getMetersY() + 400 >= location.getMetersY() && pDemo->ground.getTarget().getMetersY() - 400 <= location.getMetersY()))
+        {
+            pDemo->ground.reset(pDemo->ptHowitzer);
+            pDemo->bullet.endMove();
+        }
+        cout << pDemo->ground.getTarget() << endl;
+    }
+    else {
+        pDemo->bullet.endMove();
+    }
+}
   //
    // draw everything
    //
