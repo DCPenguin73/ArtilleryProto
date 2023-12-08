@@ -161,7 +161,7 @@ void callBack(const Interface* pUI, void* p)
    gout.drawHowitzer(pDemo->howitzer.getPosition(), pDemo->howitzer.getRadian(), pDemo->time);
 
    // draw the projectile
-   for (int i = 0; i < 20; i++)
+   for (int i = 0; i < 5; i++)
       gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
 
    // draw some text on the screen
