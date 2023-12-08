@@ -140,6 +140,7 @@ void callBack(const Interface* pUI, void* p)
                 (pDemo->ground.getTarget().getMetersY() + 400 >= location.getMetersY() && pDemo->ground.getTarget().getMetersY() - 400 <= location.getMetersY()))
         {
             pDemo->ground.reset(pDemo->ptHowitzer);
+            pDemo->howitzer.setPosition(pDemo->ptHowitzer.getMetersX(), pDemo->ptHowitzer.getMetersY());
             pDemo->bullet.endMove();
         }
         cout << pDemo->ground.getTarget() << endl;
